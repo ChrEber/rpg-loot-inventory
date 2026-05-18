@@ -1,1 +1,23 @@
-
+[
+  {
+    "name": "Sword",
+    "rarity": "Common",
+    "value": 10,
+    "stackMAX": 1,
+    "ableToEquip": true
+  }
+  {
+    "name": "Axe",
+    "rarity": "Common",
+    "value": 15,
+    "stackMAX": 1,
+    "ableToEquip": true
+  }
+  {
+    "name": "Staff",
+    "rarity": "Common",
+    "value": 20,
+    "stackMAX": 1,
+    "ableToEquip": true
+  }
+]
