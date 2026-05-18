@@ -6,4 +6,4 @@ with open('items.json','r') as file:
   
 loot = random.choice(obj)
     
-print(loot["name"])
+print(f"Congratulation! You got a {loot["rarity"]} {loot["name"]}. It's worth {loot["value"]} gold!")
