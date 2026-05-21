@@ -35,7 +35,7 @@
     "stackMAX": 1,
     "itemClass": 1
   },
-{
+  {
     "name": "Greatsword",
     "baseValue": 28,
     "stackMAX": 1,
@@ -52,5 +52,5 @@
     "baseValue": 45,
     "stackMAX": 1,
     "itemClass": 1
-  },
+  }
 ]
