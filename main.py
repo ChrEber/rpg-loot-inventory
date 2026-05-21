@@ -1,6 +1,3 @@
-import json
-import random
-
 # itemclass:
 # 0 = misc
 # 1 = weapon
@@ -8,30 +5,32 @@ import random
 # 3 = consumables
 # 4 = materials
 
+import json
+import random
+
 with open('items.json','r') as file:
   obj = json.load(file)
   
 loot = random.choice(obj)
 
-itemRarity = ["Common", "Uncommen", "Rare", "Epic", "Legendary"]
-
-rarity = ""
-rarity = random.choice(itemRarity)
-
 valueMulti = 0
 
-if rarity == "Common":
+itemRarity = ["Common", "Uncommen", "Rare", "Epic", "Legendary"]
+itemrarityValue = [0.9, 0.6, 0.3, 0.1, 0.01]
+rarity = random.choices(itemRarity, weights = itemrarityValue, k = 1)
+
+if rarity[0] == "Common":
     valueMulti = 0.5
-elif rarity == "Uncommen":
+elif rarity[0] == "Uncommen":
     valueMulti = 1
-elif rarity == "Rare":
+elif rarity[0] == "Rare":
     valueMulti = 3
-elif rarity == "Epic":
+elif rarity[0] == "Epic":
     valueMulti = 5
-elif rarity == "Legendary":
+elif rarity[0] == "Legendary":
     valueMulti = 10
 
 value = 0.0    
 value = loot["baseValue"] * valueMulti
     
-print(f"Congratulation! You got a {rarity} {loot["name"]}. It's worth {value} gold!")
+print(f"Congratulation! You got a {rarity[0]} {loot["name"]}. It's worth {value} gold!")
