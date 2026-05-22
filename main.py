@@ -30,6 +30,18 @@ elif rarity[0] == "Epic":
 elif rarity[0] == "Legendary":
     valueMulti = 10
 
+# match rarity[0]:
+#    catch "Common":
+#      valueMulti = 0,5
+#    catch "Uncommen":
+#      valueMulti = 1
+#    catch "Rare":
+#      valueMulti = 3
+#    catch "Epic":
+#      valueMulti = 5
+#    catch "Legendary":
+#      valueMulti = 10
+
 value = 0.0    
 value = loot["baseValue"] * valueMulti
     
