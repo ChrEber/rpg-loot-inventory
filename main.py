@@ -13,36 +13,26 @@ with open('items.json','r') as file:
   
 loot = random.choice(obj)
 
-valueMulti = 0
+rarityKeys = ['id', 'rarity', 'itemRarityValue', 'valueMulti', 'rarityColor']
 
-itemRarity = ["Common", "Uncommen", "Rare", "Epic", "Legendary"]
-itemrarityValue = [0.9, 0.6, 0.3, 0.1, 0.01]
-rarity = random.choices(itemRarity, weights = itemrarityValue, k = 1)
+itemRarity_Liste = {}
+itemRarity_Liste = [
+	[0, "Common",    90, 0.5, "#ffffff"],
+	[1, "Uncommon",  60,   1, "#00ff00"],
+	[2, "Rare",      30,   3, "#0080ff"],
+	[3, "Epic",      10,   5, "#a020f0"],
+	[4, "Legendary",  1,  10, "#ff9900"]
+]
 
-if rarity[0] == "Common":
-    valueMulti = 0.5
-elif rarity[0] == "Uncommen":
-    valueMulti = 1
-elif rarity[0] == "Rare":
-    valueMulti = 3
-elif rarity[0] == "Epic":
-    valueMulti = 5
-elif rarity[0] == "Legendary":
-    valueMulti = 10
+itemRarity_Dict = [dict(zip(rarityKeys, datensatz)) for datensatz in itemRarity_Liste]
 
-# match rarity[0]:
-#    case "Common":
-#      valueMulti = 0,5
-#    case "Uncommen":
-#      valueMulti = 1
-#    case "Rare":
-#      valueMulti = 3
-#    case "Epic":
-#      valueMulti = 5
-#    case "Legendary":
-#      valueMulti = 10
+gewichtung = []
+for i in range(len(itemRarity_Dict)):
+    gewichtung.append(itemRarity_Dict[i]["itemRarityValue"])
 
-value = 0.0    
-value = loot["baseValue"] * valueMulti
+rarity = random.choices(itemRarity_Dict, weights = gewichtung, k = 1)
+
+value = 0    
+value = loot['baseValue'] * rarity[0]["valueMulti"]
     
-print(f"Congratulation! You got a {rarity[0]} {loot["name"]}. It's worth {value} gold!")
+print(f"Congratulation! You got a {rarity[0]["rarity"]} {loot['name']}. It's worth {value} gold!")
