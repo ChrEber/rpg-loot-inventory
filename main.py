@@ -31,15 +31,15 @@ elif rarity[0] == "Legendary":
     valueMulti = 10
 
 # match rarity[0]:
-#    catch "Common":
+#    case "Common":
 #      valueMulti = 0,5
-#    catch "Uncommen":
+#    case "Uncommen":
 #      valueMulti = 1
-#    catch "Rare":
+#    case "Rare":
 #      valueMulti = 3
-#    catch "Epic":
+#    case "Epic":
 #      valueMulti = 5
-#    catch "Legendary":
+#    case "Legendary":
 #      valueMulti = 10
 
 value = 0.0    
