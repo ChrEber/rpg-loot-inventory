@@ -1,3 +1,6 @@
+from loot import roll_loot
+from rarity import roll_rarity
+
 def generate_loot():
     value = 0
     loot = roll_loot()
