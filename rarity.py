@@ -1,3 +1,5 @@
+import random
+
 def build_rarity_data():
     itemRarity_Liste = {}
     rarityKeys = ["id", "rarity", "itemRarityValue", "valueMulti", "rarityColor"]
