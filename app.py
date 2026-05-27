@@ -1,1 +1,8 @@
+import tkinter
 
+root = Tk()
+root.title('RPG Loot Generator')
+root.configure(backround = 'black')
+root.minsize(200, 200)
+root.maxsize(500, 500)
+root.mainloop()
