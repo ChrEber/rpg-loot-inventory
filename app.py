@@ -1,6 +1,6 @@
 import tkinter
 
-root = Tk()
+root = tkinter.Tk()
 root.title('RPG Loot Generator')
 root.configure(backround = 'black')
 root.minsize(200, 200)
