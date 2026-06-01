@@ -1,13 +1,13 @@
 import json
 import random
+from repository_base import LootRepository
 
-def load_items():
-    with open("items.json", "r") as file:
-        items = json.load(file)
-    return items
+class LootSystem: 
+    def __init__(self, repository: LootRepository):
+        self.repository = repository
 
-
-def roll_loot():
-    item = load_items()
-    loot = random.choice(item)
-    return loot
+    def roll_loot(self) -> dict | None:
+        item = self.repository.get_all_items()
+        if not item:
+            return None
+        return random.choice(item)

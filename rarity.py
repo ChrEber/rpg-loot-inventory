@@ -1,7 +1,6 @@
 import random
 
 def build_rarity_data():
-    itemRarity_Liste = {}
     rarityKeys = ["id", "rarity", "itemRarityValue", "valueMulti", "rarityColor"]
     itemRarity_Liste = [
         [0, "Common", 90, 0.5, "#ffffff"],

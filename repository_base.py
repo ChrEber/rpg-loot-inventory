@@ -1,4 +1,4 @@
-from abc import ABC, abstraktmethod
+from abc import ABC, abstractmethod
 
 class LootRepository(ABC):
   @abstractmethod
