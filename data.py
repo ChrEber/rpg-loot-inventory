@@ -13,8 +13,5 @@ def generate_loot():
         "loot": loot["name"],
         "rarityName": rarityGrade[0]["rarity"],
         "value": value,
+        "rarityColor": rarityGrade[0]["rarityColor"]
     }
-
-def print_result():
-    getLoot = generate_loot()
-    return f"Congratulation! You got a {getLoot['rarityName']} {getLoot['loot']}. It's worth {getLoot['value']} gold!"
