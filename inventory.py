@@ -1,20 +1,25 @@
-import json
+from json_helper import JsonHelperClass
 
-inventory = []
+class InventoryManager:
 
-def addItem(item):    
-    inventory.append(item)
-    if len(inventory) > 3:
-        inventory.pop(0)
+    def __init__(self):
+        self.inventory = []
+        self.helper = JsonHelperClass("inventory.json")
+        self.loadInventory()
 
-def getInventory():
-    return inventory
+    def addItem(self, item):
+        self.inventory.append(item)
+        if len(self.inventory) > 3:
+            self.inventory.pop(0)
+        self.saveInventory()
 
-def saveInventory(inventory):
-    with open(inventory, 'w') as f:
-        for item in inventory:
-            f.write(f"{item['rarityName']} {item['loot']} worth {item['value']} gold\n")
+    def loadInventory(self):
+        self.inventory = self.helper.load_json()
+        return self.inventory
 
-def printInventory():
-    for item in inventory:
-        print(f"{item['rarityName']} | {item['loot']} worth | {item['value']} gold")   
+    def saveInventory(self):
+        self.helper.save_json(self.inventory)
+
+    def printInventory(self):
+        for item in self.inventory:
+            print(f"{item['rarityName']} | {item['loot']} worth | {item['value']} gold")   
