@@ -1,20 +1,20 @@
 [
     {
-        "loot": "Staff",
-        "rarityName": "Legendary",
-        "value": 200,
-        "rarityColor": "#ff9900"
-    },
-    {
-        "loot": "Staff",
-        "rarityName": "Epic",
-        "value": 100,
-        "rarityColor": "#a020f0"
-    },
-    {
-        "loot": "Wand",
+        "loot": "Maul",
         "rarityName": "Rare",
-        "value": 75,
+        "value": 135,
         "rarityColor": "#0080ff"
+    },
+    {
+        "loot": "Mace",
+        "rarityName": "Common",
+        "value": 9.0,
+        "rarityColor": "#ffffff"
+    },
+    {
+        "loot": "Mace",
+        "rarityName": "Uncommon",
+        "value": 18,
+        "rarityColor": "#00ff00"
     }
 ]

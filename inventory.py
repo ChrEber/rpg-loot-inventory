@@ -21,5 +21,10 @@ class InventoryManager:
         self.helper.save_json(self.inventory)
 
     def printInventory(self):
+        if not self.inventory:
+            return "Dein Inventar ist leer"
+        
+        lootLine = []
         for item in self.inventory:
-            print(f"{item['rarityName']} | {item['loot']} worth | {item['value']} gold")   
+            lootLine.append(f"{item['rarityName']} | {item['loot']} worth | {item['value']} gold")
+        return "\n".join(lootLine)
