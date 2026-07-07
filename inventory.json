@@ -1,20 +1,20 @@
 [
     {
-        "loot": "Maul",
-        "rarityName": "Rare",
-        "value": 135,
-        "rarityColor": "#0080ff"
-    },
-    {
-        "loot": "Mace",
+        "loot": "Dagger",
         "rarityName": "Common",
-        "value": 9.0,
+        "value": 3.5,
         "rarityColor": "#ffffff"
     },
     {
-        "loot": "Mace",
-        "rarityName": "Uncommon",
-        "value": 18,
-        "rarityColor": "#00ff00"
+        "loot": "Sword",
+        "rarityName": "Common",
+        "value": 5.0,
+        "rarityColor": "#ffffff"
+    },
+    {
+        "loot": "Axe",
+        "rarityName": "Rare",
+        "value": 45,
+        "rarityColor": "#0080ff"
     }
 ]

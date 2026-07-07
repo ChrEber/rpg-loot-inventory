@@ -3,20 +3,11 @@ import data
 from inventory import InventoryManager
 
 inventory_manager = InventoryManager()
-
-inventoryWindow = None
+inventory_frame = None
 outputInventory = None
 
-
-root = tkinter.Tk()
-root.title('RPG Loot Generator')
-root.configure(background = 'black')
-root.minsize(200, 200)
-root.maxsize(500, 500)
-root.eval('tk::PlaceWindow . center')
-
 def update_inventory_display():
-    if inventoryWindow is not None and inventoryWindow.winfo_exists() and outputInventory is not None:
+    if inventory_frame is not None and inventory_frame.winfo_exists() and outputInventory is not None:
         outputInventory.config(state='normal')
         outputInventory.delete('1.0', tkinter.END)
         for item in inventory_manager.inventory:
@@ -27,8 +18,6 @@ def update_inventory_display():
         outputInventory.config(state='disabled')
 
 def roll_button():
-    global outputInventory
-
     loot = data.generate_loot()
     inventory_manager.addItem(loot)
     outputText.config(text=f"Congratulation!\n You got a {loot['rarityName']} {loot['loot']}.\n It's worth {loot['value']} gold!", bg=loot["rarityColor"])
@@ -36,31 +25,39 @@ def roll_button():
     update_inventory_display()
 
 def show_inventory():
-    global inventoryWindow, outputInventory
+    global inventory_frame, outputInventory
 
-    if inventoryWindow is not None and inventoryWindow.winfo_exists():
-        inventoryWindow.destroy()
-        inventoryWindow = None
-        outputInventory = None
-        return
+    if inventory_frame is not None and inventory_frame.winfo_exists():
+     inventory_frame.destroy()
+     inventory_frame = None
+     outputInventory = None
+     return
+    
+    inventory_frame = tkinter.Frame(root, bg = 'black', width=400, height=200)
+    inventory_frame.pack(side='right', fill='both', expand=False, padx= 15, pady=15)
 
-    inventoryWindow = tkinter.Toplevel(root)
-    inventoryWindow.title('Inventory')
-    inventoryWindow.configure(background = 'black')
-    inventoryWindow.minsize(300, 300)
-    inventoryWindow.maxsize(600, 600)
-    inventoryWindow.eval('tk::PlaceWindow . center')
+    outputInventory = tkinter.Text(inventory_frame, bg='black', font=('Arial', 10, 'bold'), borderwidth=0, highlightthickness=0, width=35, height=1)
+    outputInventory.pack(expand=True, fill='both')
 
-    outputInventory = tkinter.Text(inventoryWindow, bg='black', font=('Arial', 10, 'bold'), borderwidth=0, highlightthickness=0)
-    outputInventory.pack(expand=True, fill='both', padx=20, pady=20)
+    update_inventory_display()
 
-outputText = tkinter.Label(root, text="Öffne die Kiste!\n Seh wieviel Glück du hast.")
+root = tkinter.Tk()
+root.title('RPG Loot Generator')
+root.configure(background = 'black')
+root.eval('tk::PlaceWindow . center')
+root.resizable(width=True, height=False)
+
+loot_kiste = tkinter.Frame(root, bg = 'black', width=200, height=200)
+loot_kiste.pack_propagate(False)
+loot_kiste.pack(side='left', fill='both', expand=True)
+
+outputText = tkinter.Label(loot_kiste, text="Öffne die Kiste!\n Seh wieviel Glück du hast.")
 outputText.pack(expand=True)
 
-outputButton = tkinter.Button(root, text="Öffne die Lootbox", command=roll_button)
+outputButton = tkinter.Button(loot_kiste, text="Öffne die Lootbox", command=roll_button)
 outputButton.pack(expand=True)
 
-outputButton2 = tkinter.Button(root, text="Zeige das Inventar", command=show_inventory)
+outputButton2 = tkinter.Button(loot_kiste, text="Zeige das Inventar", command=show_inventory)
 outputButton2.pack(expand=True)
 
 root.mainloop()
