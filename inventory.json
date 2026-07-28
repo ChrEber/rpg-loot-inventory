@@ -1,20 +1,20 @@
 [
     {
-        "loot": "Axe",
+        "loot": "Wand",
         "rarityName": "Common",
-        "value": 7.5,
+        "value": 12.5,
         "rarityColor": "#ffffff"
     },
     {
-        "loot": "Mace",
+        "loot": "Greataxe",
         "rarityName": "Rare",
-        "value": 54,
+        "value": 105,
         "rarityColor": "#0080ff"
     },
     {
-        "loot": "Axe",
-        "rarityName": "Epic",
-        "value": 75,
-        "rarityColor": "#a020f0"
+        "loot": "Staff",
+        "rarityName": "Uncommon",
+        "value": 20,
+        "rarityColor": "#00ff00"
     }
 ]

@@ -1,11 +1,21 @@
 import tkinter
 import data
 import os
+from PIL import Image, ImageTk
 from inventory import InventoryManager
 
 inventory_manager = InventoryManager()
 inventory_frame = None
 outputInventory = None
+
+def load_icon(icon_name, size=(32, 32)):
+    icon_path = os.path.join('assets', icon_name)
+    if not os.path.exists(icon_path):
+        icon_path = os.path.join('assets', 'Allgemeines Icon.png')
+        
+    pil_img = Image.open(icon_path).convert("RGBA")
+    resized_img = pil_img.resize(size, Image.Resampling.LANCZOS)
+    return ImageTk.PhotoImage(resized_img)
 
 def update_inventory_display():
     if inventory_frame is not None and inventory_frame.winfo_exists() and outputInventory is not None:
@@ -45,8 +55,21 @@ def update_inventory_display():
 def roll_button():
     loot = data.generate_loot()
     inventory_manager.addItem(loot)
-    outputText.config(image=loot_image, text="", bg=loot["rarityColor"])
-        #outputText.config(text=f"Congratulation!\n You got a {loot['rarityName']} {loot['loot']}.\n It's worth {loot['value']} gold!", bg=loot["rarityColor"])
+    
+    # Kisten-Bild laden (z. B. 64x64 Pixel)
+    icon_name = loot.get('icon', 'Allgemeines Icon.png')
+    loot_image = load_icon(icon_name, (64, 64))
+
+    # WICHTIG: Hier setzen wir alle Ränder auf 0, genau wie im Inventar!
+    outputText.config(
+        image=loot_image, 
+        text="", 
+        bg=loot["rarityColor"],
+        bd=0,
+        highlightthickness=0,
+        padx=0,
+        pady=0
+    )
     outputText.image = loot_image
 
     update_inventory_display()
@@ -60,10 +83,10 @@ def show_inventory():
      outputInventory = None
      return
     
-    inventory_frame = tkinter.Frame(root, bg = 'black', width=400, height=200)
+    inventory_frame = tkinter.Frame(root, bg = '#2b2b2b', width=400, height=200)
     inventory_frame.pack(side='right', fill='both', expand=False, padx= 15, pady=15)
 
-    outputInventory = tkinter.Text(inventory_frame, bg='black', font=('Arial', 10, 'bold'), borderwidth=0, highlightthickness=0, width=35, height=1)
+    outputInventory = tkinter.Text(inventory_frame, bg='#2b2b2b', font=('Arial', 10, 'bold'), borderwidth=0, highlightthickness=0, width=35, height=1)
     outputInventory.pack(expand=True, fill='both')
 
     update_inventory_display()
@@ -74,11 +97,11 @@ items_bild = os.path.join('assets', 'Allgemeines Icon.png')
 loot_image = tkinter.PhotoImage(file=items_bild)
 
 root.title('RPG Loot Generator')
-root.configure(background = 'black')
+root.configure(background = '#2b2b2b')
 root.eval('tk::PlaceWindow . center')
 root.resizable(width=True, height=False)
 
-loot_kiste = tkinter.Frame(root, bg = 'black', width=200, height=200)
+loot_kiste = tkinter.Frame(root, bg = '#2b2b2b', width=200, height=200)
 loot_kiste.pack_propagate(False)
 loot_kiste.pack(side='left', fill='both', expand=True)
 
